@@ -85,6 +85,7 @@ export const portfolioData: PortfolioData = {
       "Senior Software Engineer with 4+ years of experience building enterprise backend systems using Java, Spring Boot, and cloud technologies. I have delivered production solutions across Japanese, Singaporean, and Finnish client environments. Currently pursuing an MSc in Data Science while expanding toward data engineering and AI-powered systems.",
     location: "Uttara, Dhaka, Bangladesh",
     email: "zareenzia801@gmail.com",
+    phone: "+8801791396479",
     linkedin: "linkedin.com/in/zareenzia801",
     github: "github.com/zareenzia",
     currentRole: "Senior Software Engineer",

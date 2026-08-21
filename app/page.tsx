@@ -52,6 +52,7 @@ export default function Home() {
 
       <Contact
         email={portfolioData.personal.email}
+        phone={portfolioData.personal.phone}
         location={portfolioData.personal.location}
         linkedin={portfolioData.personal.linkedin}
         github={portfolioData.personal.github}
