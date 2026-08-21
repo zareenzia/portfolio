@@ -1,10 +1,10 @@
 export function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-3 mb-3">
+      <div className="w-6 h-px bg-primary-accent/60" />
       <span className="font-mono text-xs font-semibold tracking-widest text-primary-accent uppercase">
         {children}
       </span>
-      <div className="flex-1 h-px bg-primary-accent/20"></div>
     </div>
   );
 }
@@ -18,11 +18,11 @@ export function Tag({ children }: { children: React.ReactNode }) {
 }
 
 export function SectionDivider() {
-  return <div className="h-px bg-primary-surface my-16" />;
+  return <div className="h-px bg-primary-surface/60 my-8" />;
 }
 
 export function Container({ children }: { children: React.ReactNode }) {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
   );
 }
