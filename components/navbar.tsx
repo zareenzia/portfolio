@@ -3,7 +3,6 @@
 import { useState } from "react";
 
 const navItems = [
-  { label: "ABOUT", href: "#about" },
   { label: "EXPERIENCE", href: "#experience" },
   { label: "SKILLS", href: "#skills" },
   { label: "EDUCATION", href: "#education" },
@@ -25,17 +24,17 @@ export function Navbar({ name = "Zareen Zia" }: { name?: string }) {
       <div className="max-w-6xl mx-auto px-6">
         <nav className="flex items-center justify-between h-[52px]">
 
-          {/* Logo + Name */}
-          <div className="flex items-center gap-3 flex-shrink-0">
+          {/* Logo + Name — clicks scroll to top */}
+          <a href="#" className="flex items-center gap-3 flex-shrink-0 group">
             <div className="w-9 h-9 rounded-md bg-[#1a1f3a] border border-[#d4af37]/60 flex items-center justify-center">
               <span className="font-mono text-[11px] font-bold text-[#d4af37] leading-none">
                 {initials}
               </span>
             </div>
-            <span className="font-sans text-[15px] font-bold text-[#e8e6e1] whitespace-nowrap leading-none">
+            <span className="font-sans text-[15px] font-bold text-[#e8e6e1] whitespace-nowrap leading-none group-hover:text-[#d4af37] transition-colors">
               {name}
             </span>
-          </div>
+          </a>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-7">
