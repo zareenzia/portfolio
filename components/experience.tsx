@@ -11,6 +11,12 @@ interface ExperienceItem {
   status: "ACTIVE" | "COMPLETED";
   responsibilities: string[];
   technologies: string[];
+  promotions?: Array<{
+    role: string;
+    startDate: string;
+    endDate: string;
+    responsibilities: string[];
+  }>;
 }
 
 interface ExperienceProps {
@@ -45,54 +51,75 @@ export function Experience({ experience }: ExperienceProps) {
               </div>
 
               {/* Content */}
-              <div className="ml-20 bg-primary-card rounded-lg p-6 border border-primary-surface hover:border-primary-accent/30 transition-colors">
-                {/* Header */}
-                <div className="flex flex-col sm:flex-row sm:items-baseline gap-3 mb-3">
-                  <div className="font-mono text-xs font-bold uppercase tracking-widest text-primary-accent">
-                    {job.role}
-                  </div>
-                  <div className="text-primary-text font-medium">{job.company}</div>
-                  <div className="text-xs text-primary-muted font-mono">
-                    {job.location}
+              <div className="ml-20 bg-primary-card rounded-lg border border-primary-surface hover:border-primary-accent/30 transition-colors overflow-hidden">
+                {/* Company Header */}
+                <div className="p-6 border-b border-primary-surface/50">
+                  <div className="flex flex-wrap items-center gap-3 mb-1">
+                    <span className="text-lg font-bold text-primary-text">{job.company}</span>
+                    <span className="text-xs text-primary-muted font-mono">{job.location}</span>
+                    <span className="text-xs text-primary-muted font-mono">
+                      {job.startDate} — {job.endDate}
+                    </span>
+                    <span
+                      className={`font-mono text-xs font-bold uppercase px-2 py-0.5 rounded ${
+                        job.status === "ACTIVE"
+                          ? "bg-primary-accent/20 text-primary-accent"
+                          : "bg-primary-surface text-primary-muted"
+                      }`}
+                    >
+                      ● {job.status}
+                    </span>
                   </div>
                 </div>
 
-                {/* Dates and Status */}
-                <div className="flex items-center gap-3 mb-4 text-sm">
-                  <span className="text-primary-muted font-mono">
-                    {job.startDate} — {job.endDate}
-                  </span>
-                  <span
-                    className={`font-mono text-xs font-bold uppercase px-2 py-1 rounded ${
-                      job.status === "ACTIVE"
-                        ? "bg-primary-accent/20 text-primary-accent"
-                        : "bg-primary-surface text-primary-muted"
-                    }`}
-                  >
-                    ● {job.status}
-                  </span>
-                </div>
-
-                {/* Responsibilities */}
-                <div className="mb-4">
-                  <div className="font-mono text-xs uppercase tracking-widest text-primary-muted mb-2">
-                    Responsibilities
+                {/* Current / Most Recent Role */}
+                <div className="p-6 border-b border-primary-surface/30">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary-accent" />
+                    <span className="font-mono text-sm font-bold text-primary-accent uppercase tracking-wide">
+                      {job.role}
+                    </span>
+                    {job.promotions && job.promotions.length > 0 && (
+                      <span className="font-mono text-xs text-primary-muted">
+                        (Promoted Jun 2025)
+                      </span>
+                    )}
                   </div>
-                  <ul className="space-y-1">
+                  <ul className="space-y-1.5 mb-4">
                     {job.responsibilities.map((resp, i) => (
-                      <li key={i} className="text-sm text-primary-muted">
+                      <li key={i} className="text-sm text-primary-muted pl-3">
                         • {resp}
                       </li>
                     ))}
                   </ul>
+                  <div className="flex flex-wrap gap-2">
+                    {job.technologies.map((tech) => (
+                      <Tag key={tech}>{tech}</Tag>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2">
-                  {job.technologies.map((tech) => (
-                    <Tag key={tech}>{tech}</Tag>
-                  ))}
-                </div>
+                {/* Previous Roles (Promotions) */}
+                {job.promotions && job.promotions.map((prev, i) => (
+                  <div key={i} className="p-6 bg-primary-bg/30">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary-muted/50" />
+                      <span className="font-mono text-sm font-semibold text-primary-muted uppercase tracking-wide">
+                        {prev.role}
+                      </span>
+                      <span className="font-mono text-xs text-primary-muted/70">
+                        {prev.startDate} — {prev.endDate}
+                      </span>
+                    </div>
+                    <ul className="space-y-1.5">
+                      {prev.responsibilities.map((resp, j) => (
+                        <li key={j} className="text-sm text-primary-muted/70 pl-3">
+                          • {resp}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
@@ -101,3 +128,4 @@ export function Experience({ experience }: ExperienceProps) {
     </section>
   );
 }
+

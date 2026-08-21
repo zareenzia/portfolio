@@ -8,6 +8,8 @@ interface HeroProfileProps {
   location: string;
   email: string;
   keyTechnologies: string[];
+  currentRole: string;
+  experience: string;
   linkedin?: string;
   github?: string;
 }
@@ -20,6 +22,8 @@ export function HeroProfile({
   location,
   email,
   keyTechnologies,
+  currentRole,
+  experience,
   linkedin,
   github,
 }: HeroProfileProps) {
@@ -69,15 +73,13 @@ export function HeroProfile({
                   <div className="font-mono text-xs text-primary-muted uppercase tracking-widest mb-1">
                     Current Role
                   </div>
-                  <div className="text-primary-text font-medium">
-                    Software Engineer
-                  </div>
+                  <div className="text-primary-text font-medium">{currentRole}</div>
                 </div>
                 <div>
                   <div className="font-mono text-xs text-primary-muted uppercase tracking-widest mb-1">
                     Experience
                   </div>
-                  <div className="text-primary-text font-medium">5+ Years</div>
+                  <div className="text-primary-text font-medium">{experience}</div>
                 </div>
               </div>
 

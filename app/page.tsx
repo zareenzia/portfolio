@@ -4,6 +4,7 @@ import { Skills } from "@/components/skills";
 import { Education } from "@/components/education";
 import { Projects } from "@/components/projects";
 import { Exploring } from "@/components/exploring";
+import { Research } from "@/components/research";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 import { portfolioData } from "@/data/portfolio";
@@ -19,6 +20,8 @@ export default function Home() {
         location={portfolioData.personal.location}
         email={portfolioData.personal.email}
         keyTechnologies={portfolioData.keyTechnologies}
+        currentRole={portfolioData.personal.currentRole}
+        experience={portfolioData.personal.experience}
         linkedin={portfolioData.personal.linkedin}
         github={portfolioData.personal.github}
       />
@@ -41,6 +44,10 @@ export default function Home() {
 
       {portfolioData.exploring.length > 0 && (
         <Exploring items={portfolioData.exploring} />
+      )}
+
+      {portfolioData.researchProjects && portfolioData.researchProjects.length > 0 && (
+        <Research projects={portfolioData.researchProjects} />
       )}
 
       <Contact

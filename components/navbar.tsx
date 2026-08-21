@@ -9,6 +9,7 @@ const navItems = [
   { label: "SKILLS", href: "#skills" },
   { label: "EDUCATION", href: "#education" },
   { label: "PROJECTS", href: "#projects" },
+  { label: "RESEARCH", href: "#research" },
   { label: "CONTACT", href: "#contact" },
 ];
 
@@ -23,7 +24,7 @@ export function Navbar({ name = "[YOUR NAME]" }: { name?: string }) {
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded bg-primary-accent/20 border border-primary-accent/40 flex items-center justify-center">
               <span className="text-xs font-mono font-bold text-primary-accent">
-                A
+                {name.charAt(0)}
               </span>
             </div>
             <span className="font-mono text-sm font-semibold text-primary-text hidden sm:inline">
